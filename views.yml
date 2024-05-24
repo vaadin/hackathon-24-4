@@ -1,0 +1,25 @@
+views:
+  - className: es.manolo.hackathon244.views.flowadmin.FlowAdminView
+    file: "src/main/java/es/manolo/hackathon244/views/flowadmin/FlowAdminView.java"
+    route: "data-grid"
+  - className: es.manolo.hackathon244.views.flowprivate.FlowPrivateView
+    file: "src/main/java/es/manolo/hackathon244/views/flowprivate/FlowPrivateView.java"
+    route: "hello-world3"
+  - className: es.manolo.hackathon244.views.flowperson.FlowPersonView
+    file: "src/main/java/es/manolo/hackathon244/views/flowperson/FlowPersonView.java"
+    route: "person-form"
+  - className: es.manolo.hackathon244.views.flowpeople.FlowPeopleView
+    file: "src/main/java/es/manolo/hackathon244/views/flowpeople/FlowPeopleView.java"
+    route: "master-detail"
+  - className: es.manolo.hackathon244.views.flowpublic.FlowPublicView
+    file: "src/main/java/es/manolo/hackathon244/views/flowpublic/FlowPublicView.java"
+    route: ""
+  - className: HillaPublicView
+    file: "src/main/frontend/views/hello-world.tsx"
+    route: "hello-world"
+  - className: HillaPrivateView
+    file: "src/main/frontend/views/hello-world2.tsx"
+    route: "hello-world2"
+  - className: HillaAdminView
+    file: "src/main/frontend/views/hello-world4.tsx"
+    route: "hello-world4"
