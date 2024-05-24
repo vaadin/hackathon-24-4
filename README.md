@@ -1,4 +1,4 @@
-# Shared TOOD list
+# Shared TODO list
 
 A Hilla todo list that is updated in real time in all browser windows by combining Flux and Signals.
 
