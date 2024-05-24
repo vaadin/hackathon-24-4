@@ -4,7 +4,8 @@ Things tested:
 * Side nav item with different targets
 * Testing copilot for Flow 
   * Can't add components to a view. Please see exceptions.txt. Artur is on it. 
-* Use react component in Flow - wasn't able to figure out how to setup
+* Use react component in Flow 
+  * Used 'Slider' component from the MUI core library `ReactMuiSliderElement.txt`
 
 
 
