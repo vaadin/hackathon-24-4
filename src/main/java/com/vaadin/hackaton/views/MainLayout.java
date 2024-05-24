@@ -11,7 +11,11 @@ import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.theme.lumo.LumoUtility;
-import com.vaadin.hackaton.views.firstpageview.FirstPageViewView;
+import com.vaadin.hackaton.views.firstpageview.FifthPageView;
+import com.vaadin.hackaton.views.firstpageview.FirstPageView;
+import com.vaadin.hackaton.views.firstpageview.ForthPageView;
+import com.vaadin.hackaton.views.firstpageview.SecondPageView;
+import com.vaadin.hackaton.views.firstpageview.ThirdPageView;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 /**
@@ -50,8 +54,31 @@ public class MainLayout extends AppLayout {
     private SideNav createNavigation() {
         SideNav nav = new SideNav();
 
-        nav.addItem(
-                new SideNavItem("FirstPageView", FirstPageViewView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+        var firstPageNewTab = new SideNavItem("First Page View (open in new tab)", FirstPageView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create());
+        firstPageNewTab.setOpenInNewBrowserTab(true);
+
+        nav.addItem(firstPageNewTab);
+
+        var firstPageTargetSelf = new SideNavItem("Second Page View (target self)", SecondPageView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create());
+        firstPageTargetSelf.setTarget("_self");
+
+        nav.addItem(firstPageTargetSelf);
+
+        var firstPageTargetParent = new SideNavItem("Third Page View (target parent)", ThirdPageView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create());
+        firstPageTargetParent.setTarget("_parent");
+
+        nav.addItem(firstPageTargetParent);
+
+
+        var firstPageTargetBlank = new SideNavItem("Forth Page View (target blank)", ForthPageView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create());
+        firstPageTargetBlank.setTarget("_blank");
+
+        nav.addItem(firstPageTargetBlank);
+
+        var firstPageTargetTop = new SideNavItem("Fifth Page View (target top)", FifthPageView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create());
+        firstPageTargetTop.setTarget("_top");
+
+        nav.addItem(firstPageTargetTop);
 
         return nav;
     }
