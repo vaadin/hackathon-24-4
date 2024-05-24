@@ -9,8 +9,6 @@ import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
-import com.vaadin.mpr.LegacyWrapper;
-import com.vaadin.ui.DateField;
 import org.vaadin.olli.component.CustomGridWrapper;
 
 @PageTitle("Hello World")
@@ -35,7 +33,6 @@ public class HelloWorldView extends HorizontalLayout {
 
         add(name, sayHello);
         add (new CustomGridWrapper());
-
     }
 
 }
