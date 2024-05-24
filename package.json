@@ -33,8 +33,10 @@
   },
   "devDependencies": {
     "@babel/preset-react": "7.24.1",
+    "@playwright/test": "^1.44.0",
     "@rollup/plugin-replace": "5.0.5",
     "@rollup/pluginutils": "5.1.0",
+    "@types/node": "^20.12.12",
     "@types/react": "18.3.2",
     "@types/react-dom": "18.3.0",
     "@vaadin/hilla-generator-cli": "24.4.0-beta4",
@@ -119,7 +121,7 @@
       "workbox-core": "7.1.0",
       "workbox-precaching": "7.1.0"
     },
-    "hash": "8b94c618c950227aa18d3728e9b7fe2c1456ccdbe874e6ccade371aa82a7177b"
+    "hash": "7450df4f58d753ce702ac904e4f6988b7d8391c750a5f02eb91326d676c536c9"
   },
   "overrides": {
     "@vaadin/bundles": "$@vaadin/bundles",
@@ -160,5 +162,8 @@
     "@vaadin/vaadin-themable-mixin": "$@vaadin/vaadin-themable-mixin",
     "@vaadin/vaadin-lumo-styles": "$@vaadin/vaadin-lumo-styles",
     "@vaadin/vaadin-material-styles": "$@vaadin/vaadin-material-styles"
+  },
+  "scripts": {
+    "test": "npx playwright install chromium && npx playwright test"
   }
 }
