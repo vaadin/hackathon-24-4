@@ -2,6 +2,8 @@
 
 Things tested:
 * Side nav item with different targets
+* Testing copilot for Flow
+  * Can't add components to empty view. Please see exceptions.txt
 
 
 
