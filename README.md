@@ -2,8 +2,13 @@
 Repository for the 24.4 hackathon
 
 ## What I did
-1)Tested new Grid select item
-2)Tried new Hilla-Flow views/navigation
+1. Tested new Grid select item
+2. Tried new Hilla-Flow views/navigation
+3. Had issue that Flow view onDetach not happening when navigating from Flow to Hilla view
+   https://github.com/vaadin/flow/issues/19447 
+4. Testing new GridPro withCellEditableProvider
+5. Tested checkbox helper text / helper component feature - found small bug there:
+   https://github.com/vaadin/flow-components/issues/6323
 
 
 ## rules

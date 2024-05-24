@@ -2,6 +2,7 @@ package com.vaadin.kriss.views.datagrid;
 
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.DetachEvent;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.grid.Grid;
@@ -13,6 +14,7 @@ import com.vaadin.flow.component.gridpro.GridPro;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -51,12 +53,32 @@ public class DataGridView extends Div {
     private boolean scrollingAllowed = false;
     private ExecutorService executor;
     private final Random random = new Random();
+    private boolean someFlag = false;
 
     public DataGridView() {
         addClassName("data-grid-view");
         setSizeFull();
         createGrid();
+        add(createSomeCheckbox());
         add(grid);
+    }
+
+    private Checkbox createSomeCheckbox() {
+        Checkbox someCheckbox = new Checkbox("Some Checkbox");
+        someCheckbox.addValueChangeListener(event -> {
+            if (event.getValue()) {
+                someCheckbox.setHelperComponent(null);
+                someCheckbox.setHelperText("This really helps!");
+            } else {
+                someCheckbox.setHelperText(null);
+                someCheckbox.setHelperComponent(VaadinIcon.HEART_O.create());
+            }
+        });
+//        someCheckbox.addDoubleClickListener(doubleClickEvent -> {
+////            someCheckbox.setHelperText(null);
+//            someCheckbox.setHelperComponent(VaadinIcon.HEART.create());
+//        });
+        return someCheckbox;
     }
 
     @Override
@@ -91,6 +113,7 @@ public class DataGridView extends Div {
     protected void onDetach(DetachEvent detachEvent) {
         super.onDetach(detachEvent);
         scrollingAllowed = false;
+        System.out.println("Detach triggered");
 
         executor.shutdown();
     }
@@ -136,12 +159,15 @@ public class DataGridView extends Div {
     }
 
     private void createStatusColumn() {
-        statusColumn = grid.addEditColumn(Client::getClient, new ComponentRenderer<>(client -> {
+        var statusColumnConf = grid.addEditColumn(Client::getClient, new ComponentRenderer<>(client -> {
             Span span = new Span();
             span.setText(client.getStatus());
             span.getElement().setAttribute("theme", "badge " + client.getStatus().toLowerCase());
             return span;
-        })).select((item, newValue) -> item.setStatus(newValue), Arrays.asList("Pending", "Success", "Error")).setComparator(client -> client.getStatus()).setHeader("Status");
+        }));
+        statusColumn = statusColumnConf.getColumn();
+        statusColumnConf.select((item, newValue) -> item.setStatus(newValue), Arrays.asList("Pending", "Success", "Error")).setComparator(client -> client.getStatus()).setHeader("Status");
+        statusColumnConf.withCellEditableProvider(client -> client.getStatus().equals("Pending"));
     }
 
     private void createDateColumn() {
