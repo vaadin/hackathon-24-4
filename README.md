@@ -1,5 +1,10 @@
-# hackathon-24-4
+# hackathon-24-4  Kriss Project
 Repository for the 24.4 hackathon
+
+## What I did
+1)Tested new Grid select item
+2)Tried new Hilla-Flow views/navigation
+
 
 ## rules
 Hackathon Rules
@@ -10,3 +15,5 @@ Hackathon Rules
 4. Contribution options: If you don’t have any code to show, please add a README or screenshots demoing your work.
 6. Communication: Use Slack channel #hackathon-24-4 for discussions.
 7. Documentation: Refer to vaadin.com/docs/next for help and information.
+
+
