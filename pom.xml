@@ -217,10 +217,10 @@
                                 </goals>
                                 <phase>integration-test</phase>
                                 <configuration>
-                                    <executable>npx</executable>
+                                    <executable>npm</executable>
                                     <arguments>
-                                        <argument>playwright</argument>
                                         <argument>test</argument>
+                                        <argument>--</argument>
                                         <argument>${headed}</argument>
                                     </arguments>
                                 </configuration>
