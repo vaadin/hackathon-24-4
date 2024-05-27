@@ -205,25 +205,8 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <!-- Runs the integration tests (src/test/java/**/*IT) after the server is started -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <trimStackTrace>false</trimStackTrace>
-                            <enableAssertions>true</enableAssertions>
-                        </configuration>
-                    </plugin>
-                    <!-- Runs hilla tests ((src/test/frontend/**/*.spec.ts)) after the server is started -->
-                    <plugin>
+                   <!-- Runs hilla tests ((src/test/frontend/**/*.spec.ts)) after the server is started -->
+                   <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
                         <executions>
@@ -243,6 +226,23 @@
                                 </configuration>
                             </execution>
                         </executions>
+                    </plugin>
+                    <!-- Runs the integration tests (src/test/java/**/*IT) after the server is started -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <trimStackTrace>false</trimStackTrace>
+                            <enableAssertions>true</enableAssertions>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
