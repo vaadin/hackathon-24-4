@@ -5,6 +5,9 @@ on:
   pull_request:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true  
 jobs:
   verify:
     timeout-minutes: 60
@@ -17,6 +20,7 @@ jobs:
     steps:
       - name: Set TB License (used in pro-components)
         run: |
+          set
           TBL=${{ secrets.TB_LICENSE }}
           [ -z "$TBL" ] && echo "No TB license provided" && exit 1
           mkdir -p ~/.vaadin/
@@ -34,17 +38,20 @@ jobs:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven-
+      - name: Install browsers
+        run: |
+          npm install --ci
+          npx playwright install chromium --with-deps
+          npx playwright install-deps
       - name: Verify
         run: |
-          mvn -B -V -ntp verify -Pit,production
+          ./mvnw -B -V -ntp verify -Pit,production
       - uses: actions/upload-artifact@v4
         with:
           name: tests-report
-          path: |
-            target/failsafe-reports
-            target/playwright
+          path: target/**-reports
           retention-days: 30
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
-          files: "**/target/*-reports/TEST*.xml"
+          files: "target/*-reports/TEST*.xml"
