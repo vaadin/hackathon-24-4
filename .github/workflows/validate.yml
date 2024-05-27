@@ -39,11 +39,12 @@ jobs:
           mvn -B -V -ntp verify -Pit,production
       - uses: actions/upload-artifact@v4
         with:
-          name: hilla-tests-report
-          path: target/failsafe-reports
+          name: tests-report
+          path: |
+            target/failsafe-reports
+            target/playwright
           retention-days: 30
-      - uses: actions/upload-artifact@v4
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
         with:
-          name: flow-tests-report
-          path: target/playwright/report/
-          retention-days: 30
+          files: "**/target/*-reports/TEST*.xml"
