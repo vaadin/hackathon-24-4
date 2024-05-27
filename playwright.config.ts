@@ -76,7 +76,7 @@ export default defineConfig({
   webServer: {
     command: "./mvnw -B -ntp -Dspring-boot.run.jvmArguments='-Dvaadin.launch-browser=false'",
     url: "http://127.0.0.1:8080",
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: true,
     stdout: "pipe",
     stderr: "pipe",
   },  
