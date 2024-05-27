@@ -13,8 +13,14 @@ jobs:
       # for EnricoMi/publish-unit-test-result-action
       issues: read
       checks: write
-      pull-requests: write 
+      pull-requests: write
     steps:
+      - name: Set TB License (used in pro-components)
+        run: |
+          TBL=${{ secrets.TB_LICENSE }}
+          [ -z "$TBL" ] && echo "No TB license provided" && exit 1
+          mkdir -p ~/.vaadin/
+          echo '{"username":"'`echo $TBL | cut -d / -f1`'","proKey":"'`echo $TBL | cut -d / -f2`'"}' > ~/.vaadin/proKey
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -31,3 +37,13 @@ jobs:
       - name: Verify
         run: |
           mvn -B -V -ntp verify -Pit,production
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hilla-tests-report
+          path: target/failsafe-reports
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: flow-tests-report
+          path: target/playwright/report/
+          retention-days: 30
