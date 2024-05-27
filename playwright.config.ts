@@ -11,7 +11,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './src/test/frontend/views',
-  outputDir: './target',
+  outputDir: './target/playwright-reports/tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -22,7 +22,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html', { outputFolder: 'target/playwright-reports' }],
+    ['html', { outputFolder: 'target/playwright-reports/html'}],
     ['junit', { outputFile: 'target/playwright-reports/TEST-frontend-report.xml' }]
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -76,8 +76,8 @@ export default defineConfig({
   webServer: {
     command: "./mvnw -B -ntp -Dspring-boot.run.jvmArguments='-Dvaadin.launch-browser=false'",
     url: "http://127.0.0.1:8080",
-    reuseExistingServer: true,
+    reuseExistingServer: !!process.env.MAVEN_CMD_LINE_ARGS,
     stdout: "pipe",
     stderr: "pipe",
-  },  
+  },
 });
