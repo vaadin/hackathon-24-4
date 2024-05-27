@@ -1,3 +1,7 @@
+* Tested MPR LegacyWrapper with WebComponentExporter in a Hilla/React view
+* Created https://github.com/vaadin/flow/issues/19446
+
+
 # hackathon-24-4
 Repository for the 24.4 hackathon
 
