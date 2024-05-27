@@ -1,0 +1,4 @@
+vaadin-app-layout > :not([slot]) {
+    box-sizing: border-box;
+    height: 100%;
+}
