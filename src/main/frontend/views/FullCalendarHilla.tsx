@@ -99,22 +99,13 @@ export default function FullCalendarHilla(props: FullCalendarHillaOptions) {
                 return FullCalendarEndpoint.fetchEntries({
                     start: ignoreOffset(fetchInfo.start),
                     end: ignoreOffset(fetchInfo.end)
-                }).then(value => {
+                })/*.then(value => {
                     // check, if there already has been a new fetch before this one
                     // returned. this can be the case, if the user switches fast through periods, while the
                     // server has not yet answered.
                     if (lastFetchInfo === fetchInfo) {
                         if (value) {
                             value = value.map(entry => {
-                                // remove this map, when the utc serializer works on the server side
-
-                                if (entry?.start && !entry.start.endsWith("Z")) {
-                                    entry.start += "Z";
-                                }
-                                if (entry?.end && !entry.end.endsWith("Z")) {
-                                    entry.end += "Z";
-                                }
-
                                 return entry;
                             })
                             successCallback(value as Entry[]);
@@ -122,7 +113,7 @@ export default function FullCalendarHilla(props: FullCalendarHillaOptions) {
                     }
                 }).catch(reason => {
                     failureCallback(reason);
-                });
+                })*/;
             }}
             /*eventClick={eventInfo => {
                 FullCalendarEndpoint.fetchFullEntry(eventInfo.event.id);

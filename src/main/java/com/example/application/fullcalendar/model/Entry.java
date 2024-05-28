@@ -49,10 +49,10 @@ public class Entry {
     @NotNull
     private String title;
 
-    @JsonSerialize(contentUsing = LocalDateTimeUTCSerializer.class) // FIXME not working currently?
+    @JsonSerialize(using = LocalDateTimeUTCSerializer.class) // FIXME not working currently?
     private LocalDateTime start;
 
-    @JsonSerialize(contentUsing = LocalDateTimeUTCSerializer.class) // FIXME not working currently?
+    @JsonSerialize(using = LocalDateTimeUTCSerializer.class) // FIXME not working currently?
     private LocalDateTime end;
 
     @JsonUpdateAllowed
